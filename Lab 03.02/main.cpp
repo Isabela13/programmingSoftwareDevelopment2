@@ -17,7 +17,7 @@ int main(){
 	long long int n, m;
 	char l;
 
-	cin >> n;
+	
 	while(cin >> n && n){
 
 		map<int, int> pe_esquerdo;
