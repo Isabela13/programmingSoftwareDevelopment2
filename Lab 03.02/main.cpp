@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void imprimeTabela(map <int, int> &tabela) {
+void imprimeMap(map <int, int> &tabela) {
   map<int, int>::iterator it;
   for (it = tabela.begin(); it != tabela.end(); ++it) {
     cout << it->first << ": " << it->second << endl;
@@ -18,7 +18,7 @@ int main(){
 	char l;
 
 	cin >> n;
-	//while(cin >> n && n){
+	while(cin >> n && n){
 
 		map<int, int> pe_esquerdo;
 		map<int, int> pe_direito;
@@ -37,31 +37,14 @@ int main(){
 			}
 		}
 
-		imprimeTabela(pe_esquerdo);
-		imprimeTabela(pe_direito);
-		cout<< "\n";
-
 		for (ite=pe_esquerdo.begin(); ite!=pe_esquerdo.end(); ++ite) {
-			for (itd=pe_direito.begin(); itd!=pe_direito.end(); ++itd){
-				/*cout << (ite->first) ;
-				cout << pe_direito.count(it->first) ;*/
-				//so verifica se a chave esta ou não presente
-				if (pe_direito.count(ite->first) > 0) {
-					
-					cout << numero_de_pares_corretos<< "\n";
-					// acho que tinha que ser it->second
-					cout << ite->second<< "\n";
-					//te
-					cout << pe_direito[itd->second]<< "\n";
-					cout << min(ite->second, pe_direito[itd->second])<< "\n";
-					numero_de_pares_corretos += min(ite->second, pe_direito[itd->second]);
-				}
-			}
-			
+			if (pe_direito.count(ite->first) > 0) {
+				numero_de_pares_corretos += min(ite->second, pe_direito[ite->first]);
+			}	
 		}
 
 		cout << numero_de_pares_corretos;
-	//}
+	}
 
 
 }
